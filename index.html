@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>InstaShip Express - تتبع شحنتك برقم الهاتف بكل سهولة</title>
   <link rel="icon" type="image/png" href="logo.png" />
 
@@ -33,11 +33,19 @@
       padding: 0;
       user-select: none;
       -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     input, textarea {
       user-select: auto;
       -webkit-user-select: auto;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      min-height: 100%;
+      position: relative;
     }
 
     html {
@@ -50,23 +58,20 @@
       font-family: var(--font-family);
       -webkit-font-smoothing: antialiased;
       direction: rtl;
-      overflow-x: hidden;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
     /* Background animated gradient blobs */
     .bg-blobs {
-      z-index: -1;
-      background: var(--bg-color);
-      width: 100vw;
-      height: 100vh;
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
       pointer-events: none;
+      z-index: -1;
+      background: var(--bg-color);
     }
 
     .blob-1 {
@@ -74,6 +79,8 @@
       border-radius: 50%;
       width: 55vw;
       height: 55vw;
+      min-width: 320px;
+      min-height: 320px;
       animation: 11s ease-in-out infinite alternate float;
       position: absolute;
       top: -12%;
@@ -85,6 +92,8 @@
       border-radius: 50%;
       width: 65vw;
       height: 65vw;
+      min-width: 360px;
+      min-height: 360px;
       animation: 13s ease-in-out infinite alternate-reverse float;
       position: absolute;
       bottom: -22%;
@@ -93,7 +102,7 @@
 
     @keyframes float {
       0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(32px, 32px) scale(1.06); }
+      100% { transform: translate(25px, 25px) scale(1.05); }
     }
 
     @keyframes spin {
@@ -114,13 +123,15 @@
       margin-bottom: 24px;
       padding: 24px 0;
       display: flex;
+      width: 100%;
     }
 
     .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
+      flex-shrink: 0;
     }
 
     .logo img {
@@ -143,7 +154,7 @@
 
     .nav-links {
       align-items: center;
-      gap: 32px;
+      gap: 28px;
       display: flex;
     }
 
@@ -216,12 +227,15 @@
     .hero {
       text-align: center;
       padding: 60px 0 70px;
+      width: 100%;
     }
 
     .hero-content {
       flex-direction: column;
       align-items: center;
       display: flex;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .badge-pill {
@@ -240,10 +254,11 @@
 
     .hero h1 {
       letter-spacing: -0.5px;
-      margin-bottom: 22px;
-      font-size: 56px;
+      margin-bottom: 20px;
+      font-size: 54px;
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.25;
+      max-width: 800px;
     }
 
     .hero h1 span {
@@ -254,8 +269,8 @@
 
     .hero p {
       color: var(--text-secondary);
-      max-width: 640px;
-      margin: 0 auto 40px;
+      max-width: 620px;
+      margin: 0 auto 38px;
       font-size: 18px;
       line-height: 1.7;
     }
@@ -263,7 +278,7 @@
     /* Tracking Widget */
     .tracking-widget {
       width: 100%;
-      max-width: 720px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
@@ -277,6 +292,7 @@
       display: flex;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
       transition: border-color 0.25s, box-shadow 0.25s;
+      width: 100%;
     }
 
     .search-box:focus-within {
@@ -289,13 +305,15 @@
       align-items: center;
       padding: 0 16px;
       display: flex;
+      min-width: 0;
     }
 
     .search-icon {
       color: var(--text-secondary);
-      margin-left: 14px;
+      margin-left: 12px;
       display: flex;
       align-items: center;
+      flex-shrink: 0;
     }
 
     .search-input {
@@ -305,8 +323,9 @@
       outline: none;
       flex: 1;
       height: 100%;
-      font-size: 18px;
+      font-size: 17px;
       font-family: inherit;
+      width: 100%;
     }
 
     .search-input::placeholder {
@@ -320,12 +339,13 @@
       backdrop-filter: blur(16px);
       border: 1px solid rgba(239, 68, 68, 0.35);
       border-radius: 20px;
-      max-width: 720px;
+      max-width: 700px;
       margin: 28px auto 0;
-      padding: 32px;
+      padding: 32px 24px;
       text-align: center;
       animation: 0.4s ease-out slideUp;
       box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.15);
+      width: 100%;
     }
 
     .error-card-icon {
@@ -343,14 +363,14 @@
 
     .error-card h3 {
       color: #f87171;
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 700;
       margin-bottom: 8px;
     }
 
     .error-card p {
       color: var(--text-secondary);
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
     }
 
@@ -362,10 +382,11 @@
       border: 1px solid var(--surface-border);
       border-radius: 24px;
       max-width: 860px;
-      margin: 0 auto 80px;
-      padding: 40px;
+      margin: 0 auto 70px;
+      padding: 36px;
       animation: 0.5s ease-out slideUp;
       box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.4);
+      width: 100%;
     }
 
     @keyframes slideUp {
@@ -378,10 +399,11 @@
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 28px;
-      padding-bottom: 24px;
+      padding-bottom: 22px;
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
+      width: 100%;
     }
 
     .result-info h3 {
@@ -395,7 +417,7 @@
       color: var(--text-primary);
       font-family: monospace;
       letter-spacing: 1px;
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 700;
     }
 
@@ -410,8 +432,8 @@
 
     .status-badge {
       border-radius: 12px;
-      padding: 10px 20px;
-      font-size: 15px;
+      padding: 10px 18px;
+      font-size: 14px;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
@@ -426,7 +448,7 @@
       box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
     }
 
-    /* SIMPLE & REALISTIC LAPTOP PACKAGE CARD */
+    /* LAPTOP PACKAGE CARD */
     .package-card {
       background: rgba(15, 23, 42, 0.65);
       border: 1px solid var(--surface-border);
@@ -436,6 +458,7 @@
       display: flex;
       align-items: center;
       gap: 22px;
+      width: 100%;
     }
 
     .package-img {
@@ -459,7 +482,8 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+      min-width: 0;
     }
 
     .package-title-row {
@@ -471,7 +495,7 @@
     }
 
     .package-title-row h4 {
-      font-size: 21px;
+      font-size: 20px;
       font-weight: 700;
       color: #ffffff;
     }
@@ -487,12 +511,13 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
     }
 
     .package-details-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 20px;
       align-items: center;
     }
 
@@ -529,7 +554,8 @@
     }
 
     .timeline-container {
-      padding: 0 14px;
+      padding: 0 10px;
+      width: 100%;
     }
 
     .timeline {
@@ -547,8 +573,8 @@
     }
 
     .timeline-item {
-      padding-bottom: 34px;
-      padding-right: 64px;
+      padding-bottom: 32px;
+      padding-right: 60px;
       position: relative;
     }
 
@@ -582,7 +608,7 @@
       background: rgba(15, 23, 42, 0.65);
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 14px;
-      padding: 16px 20px;
+      padding: 16px 18px;
       transition: all 0.3s;
     }
 
@@ -594,7 +620,7 @@
     .timeline-content h4 {
       color: var(--text-primary);
       margin-bottom: 4px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
     }
 
@@ -605,7 +631,8 @@
       border-radius: 8px;
       margin-top: 8px;
       padding: 8px 12px;
-      font-size: 14px;
+      font-size: 13px;
+      line-height: 1.5;
     }
 
     .timeline-content .date {
@@ -618,16 +645,17 @@
     /* Features Section */
     .features-section {
       padding-bottom: 90px;
+      width: 100%;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 56px;
+      margin-bottom: 52px;
     }
 
     .section-title h2 {
-      margin-bottom: 14px;
-      font-size: 34px;
+      margin-bottom: 12px;
+      font-size: 32px;
       font-weight: 800;
     }
 
@@ -641,17 +669,18 @@
     }
 
     .features {
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
       display: grid;
+      width: 100%;
     }
 
     .feature-card {
       background: var(--surface);
       border: 1px solid var(--surface-border);
       text-align: right;
-      border-radius: 22px;
-      padding: 36px 28px;
+      border-radius: 20px;
+      padding: 32px 24px;
       transition: all 0.3s ease;
     }
 
@@ -662,18 +691,18 @@
     }
 
     .feature-icon {
-      border-radius: 18px;
+      border-radius: 16px;
       justify-content: center;
       align-items: center;
-      width: 58px;
-      height: 58px;
-      margin-bottom: 22px;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 20px;
       display: flex;
     }
 
     .feature-icon svg {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
     }
 
     .bg-blue {
@@ -692,7 +721,7 @@
     }
 
     .feature-card h3 {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-size: 19px;
       font-weight: 700;
     }
@@ -700,16 +729,17 @@
     .feature-card p {
       color: var(--text-secondary);
       line-height: 1.6;
-      font-size: 15px;
+      font-size: 14px;
     }
 
     /* Footer */
     .footer {
       margin-top: auto;
       border-top: 1px solid var(--surface-border);
-      padding: 28px 0;
+      padding: 24px 0;
       color: var(--text-secondary);
-      font-size: 14px;
+      font-size: 13px;
+      width: 100%;
     }
 
     .footer-content {
@@ -717,79 +747,302 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 14px;
     }
 
     .footer strong {
       color: var(--text-primary);
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
+    /* ====================================================
+       PERFECT MOBILE OPTIMIZATION (CENTERED & ROCK SOLID)
+       ==================================================== */
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      /* Header: Perfectly fitted, no horizontal overflow */
       .header {
-        flex-direction: row;
-        gap: 14px;
-        padding: 16px 0;
+        padding: 14px 0;
+        margin-bottom: 8px;
       }
 
-      .nav-links {
-        gap: 16px;
+      .logo img {
+        height: 34px;
       }
 
+      .brand-badge {
+        font-size: 10px;
+        padding: 2px 6px;
+      }
+
+      /* Hide redundant inline desktop nav links on phones */
+      .nav-links a:not(.btn) {
+        display: none;
+      }
+
+      .btn-outline {
+        padding: 8px 14px;
+        font-size: 13px;
+        border-radius: 10px;
+      }
+
+      /* Hero section centered */
       .hero {
-        padding: 36px 0 50px;
+        padding: 24px 0 38px;
+      }
+
+      .badge-pill {
+        font-size: 12px;
+        padding: 6px 14px;
+        margin-bottom: 16px;
       }
 
       .hero h1 {
-        font-size: 34px;
+        font-size: 27px;
+        line-height: 1.35;
+        margin-bottom: 14px;
       }
 
       .hero p {
-        font-size: 15px;
-        margin-bottom: 30px;
+        font-size: 14px;
+        line-height: 1.65;
+        margin-bottom: 26px;
+        padding: 0 6px;
       }
 
+      /* Centered, stacked search box */
       .search-box {
         flex-direction: column;
-        gap: 10px;
-        padding: 10px;
+        padding: 8px;
+        gap: 8px;
+        border-radius: 16px;
       }
 
       .input-group {
-        padding: 8px 4px;
+        padding: 6px 12px;
+        height: 46px;
+      }
+
+      .search-input {
+        font-size: 15px;
       }
 
       .btn-lg {
         width: 100%;
-        padding: 14px 20px;
+        height: 46px;
+        padding: 0;
+        font-size: 15px;
+        border-radius: 12px;
       }
 
+      /* Tracking Result Card */
       .tracking-result-card {
-        padding: 24px 18px;
-      }
-
-      .package-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .package-img {
-        width: 100%;
-        height: 160px;
+        padding: 20px 14px;
+        border-radius: 18px;
+        margin-bottom: 40px;
       }
 
       .result-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding-bottom: 16px;
+        margin-bottom: 20px;
+      }
+
+      .result-info {
+        text-align: center;
+        width: 100%;
+      }
+
+      .result-info h3 {
+        font-size: 19px;
+      }
+
+      .location-info {
+        justify-content: center;
+        font-size: 13px;
+      }
+
+      .status-badge {
+        width: 100%;
+        justify-content: center;
+        font-size: 13px;
+        padding: 8px 12px;
+      }
+
+      /* Laptop Card on Phone */
+      .package-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 16px 12px;
+        gap: 14px;
+        border-radius: 14px;
+      }
+
+      .package-img {
+        width: 100%;
+        max-width: 260px;
+        height: 150px;
+        border-radius: 10px;
+      }
+
+      .package-info {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+      }
+
+      .package-title-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .package-title-row h4 {
+        font-size: 18px;
+      }
+
+      .package-details-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .detail-item {
+        justify-content: center;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.22);
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+      }
+
+      /* Timeline on Phone */
+      .timeline-title {
+        font-size: 15px;
+        margin-bottom: 18px;
+        justify-content: center;
+      }
+
+      .timeline-container {
+        padding: 0;
+      }
+
+      .timeline:before {
+        right: 17px;
       }
 
       .timeline-item {
-        padding-right: 50px;
+        padding-right: 48px;
+        padding-bottom: 22px;
       }
 
+      .timeline-icon {
+        width: 36px;
+        height: 36px;
+        right: 0;
+      }
+
+      .timeline-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .timeline-content {
+        padding: 12px 14px;
+        border-radius: 12px;
+      }
+
+      .timeline-content h4 {
+        font-size: 14px;
+      }
+
+      .timeline-content .comment {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+
+      .timeline-content .date {
+        font-size: 11px;
+      }
+
+      /* Error Card */
+      .error-card {
+        padding: 22px 16px;
+        border-radius: 16px;
+        margin: 20px auto 0;
+      }
+
+      .error-card-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 12px;
+      }
+
+      .error-card-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .error-card h3 {
+        font-size: 18px;
+      }
+
+      .error-card p {
+        font-size: 13px;
+      }
+
+      /* Features on Phone */
+      .features-section {
+        padding-bottom: 50px;
+      }
+
+      .section-title {
+        margin-bottom: 28px;
+      }
+
+      .section-title h2 {
+        font-size: 23px;
+      }
+
+      .section-title p {
+        font-size: 13px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .feature-card {
+        padding: 22px 18px;
+        border-radius: 16px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .feature-card h3 {
+        font-size: 17px;
+      }
+
+      .feature-card p {
+        font-size: 13px;
+      }
+
+      /* Footer */
       .footer-content {
         flex-direction: column;
         text-align: center;
+        gap: 8px;
       }
     }
   </style>
@@ -837,7 +1090,7 @@
           <form id="search-form" class="search-box">
             <div class="input-group">
               <span class="search-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
               </span>
@@ -878,7 +1131,7 @@
         <!-- Feature 1 -->
         <div class="feature-card">
           <div class="feature-icon bg-blue">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M15.914 4a1.5 1.5 0 0 0-2.474-1.561l-9 9A1.5 1.5 0 0 0 5.5 14h4.002a.5.5 0 0 1 .471.666L8.086 20a1.5 1.5 0 0 0 2.475 1.56l9-9A1.5 1.5 0 0 0 18.5 10h-3.997a.5.5 0 0 1-.472-.667z"></path>
             </svg>
           </div>
@@ -891,7 +1144,7 @@
         <!-- Feature 2 -->
         <div class="feature-card">
           <div class="feature-icon bg-purple">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path>
               <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
             </svg>
@@ -905,7 +1158,7 @@
         <!-- Feature 3 -->
         <div class="feature-card">
           <div class="feature-icon bg-green">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
               <path d="m9 12 2 2 4-4"></path>
             </svg>
@@ -1039,7 +1292,7 @@
             </div>
           </div>
 
-          <!-- CLEAN LAPTOP CARD (NO BULKY SPECS) -->
+          <!-- CLEAN LAPTOP CARD (PERFECTLY CENTERED ON MOBILE) -->
           <div class="package-card">
             <div class="package-img">
               <img src="laptop.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80';" alt="لابتوب" />
